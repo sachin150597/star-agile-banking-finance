@@ -31,7 +31,7 @@ pipeline{
         stage('Build Image and expose') {
             steps {
                 sh 'docker build -t sachin_img .'
-                sh 'docker run -itd -p 8282:8091 --name mycontainer sachin_img'
+                sh 'docker run -itd -p 8091:8091 --name mycontainer sachin_img'
             }
         }
     }
