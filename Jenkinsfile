@@ -28,5 +28,9 @@ pipeline{
                 sh 'mvn package'
             }
         }
+        stage('Build Image') {
+            steps {
+                sh 'docker build -t sachin_img .'
+                sh 'docker run -itd -p 8082:80 name sachin'
     }
 }
