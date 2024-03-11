@@ -42,18 +42,5 @@ pipeline{
     }
             }
         }
-         stage('Provision Test Server') {
-            steps {
-                // Provision test server using Terraform
-                sh 'terraform apply -auto-approve'
-            }
-        }
-
-        stage('Configure Test Server') {
-            steps {
-                // Configure test server using Ansible
-                sh 'ansible-playbook -i inventory/hosts playbook.yml'
-            }
-        }
     }    
 }
