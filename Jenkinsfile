@@ -30,8 +30,8 @@ pipeline{
         }
         stage('Build Image and expose') {
             steps {
-                sh 'docker build -t sachin2 .'
-                sh 'docker run -itd -p 8081:8081 --name mycontainer sachin2'
+                sh 'docker build -t sachin-image .'
+                sh 'docker run -itd -p 8081:8082 --name mycontainer sachin-image'
             }
         }
          stage('Provision Test Server') {
