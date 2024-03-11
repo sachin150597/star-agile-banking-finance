@@ -29,8 +29,17 @@ pipeline{
             }
         }
         stage('Build Image and expose') {
-            steps {
+    steps {
+        script {
+            try {
                 sh 'docker build -t sachin-image .'
+                sh 'docker run -d -p 8000:8000 --name mycontainer sachin-image'
+            } catch (Exception e) {
+                currentBuild.result = 'FAILURE'
+                throw e
+            }
+        }
+    }
             }
         }
          stage('Provision Test Server') {
