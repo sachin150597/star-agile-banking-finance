@@ -33,7 +33,7 @@ pipeline{
         script {
             try {
                 sh 'docker build -t sachin-image .'
-                sh 'docker run -d -p 8000:8000 --name mycontainer sachin-image'
+                sh 'docker run -d -p 8000:8000 --name mycontainer1 sachin-image'
             } catch (Exception e) {
                 currentBuild.result = 'FAILURE'
                 throw e
