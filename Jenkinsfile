@@ -34,5 +34,18 @@ pipeline{
                 sh 'docker run -itd -p 8081:8081 --name mycontainer sachin2'
             }
         }
-    }
+         stage('Provision Test Server') {
+            steps {
+                // Provision test server using Terraform
+                sh 'terraform apply -auto-approve'
+            }
+        }
+
+        stage('Configure Test Server') {
+            steps {
+                // Configure test server using Ansible
+                sh 'ansible-playbook -i inventory/hosts playbook.yml'
+            }
+        }
+    }    
 }
